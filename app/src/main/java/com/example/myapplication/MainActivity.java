@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
 
 
-        binding.fab.setOnClickListener(new View.OnClickListener() {
+        binding.wifiChange.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 WifiManager wm = (WifiManager) getApplicationContext().getSystemService(Context.WIFI_SERVICE);
@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
                 System.out.println("ssid:"+wm.getConnectionInfo().getSSID());
 
                 System.out.printf("enable:%s\n", wm.isWifiEnabled());
-                Snackbar.make(view, "handle click wifi change", Snackbar.LENGTH_LONG)
+                Snackbar.make(view, "change to disconnect", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
                 wm.setWifiEnabled(false);
             }
