@@ -47,16 +47,15 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 WifiManager wm = (WifiManager) getApplicationContext().getSystemService(Context.WIFI_SERVICE);
-                System.out.println("hoge:" + wm);
-                wm.setWifiEnabled(false);
-                boolean succeeded = wm.disconnect();
-                System.out.println(wm.getConnectionInfo());
-                System.out.printf("state:%s\n", succeeded);
+                System.out.println("wifi info:" + wm.getScanResults());
 
+                System.out.println(wm.getConnectionInfo());
+                System.out.println("ssid:"+wm.getConnectionInfo().getSSID());
 
                 System.out.printf("enable:%s\n", wm.isWifiEnabled());
-                Snackbar.make(view, "ふなを", Snackbar.LENGTH_LONG)
+                Snackbar.make(view, "handle click wifi change", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
+                wm.setWifiEnabled(false);
             }
         });
 
