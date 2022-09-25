@@ -5,6 +5,7 @@ import android.net.wifi.ScanResult;
 import android.net.wifi.WifiConfiguration;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
+import android.net.wifi.WifiNetworkSuggestion;
 import android.os.Bundle;
 
 import com.google.android.material.snackbar.Snackbar;
@@ -22,6 +23,8 @@ import com.example.myapplication.databinding.ActivityMainBinding;
 
 import android.view.Menu;
 import android.view.MenuItem;
+
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -48,6 +51,9 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 WifiManager wm = (WifiManager) getApplicationContext().getSystemService(Context.WIFI_SERVICE);
                 System.out.println("wifi info:" + wm.getScanResults());
+
+                List<WifiNetworkSuggestion> suggestions = wm.getNetworkSuggestions();
+                wm.removeNetworkSuggestions(suggestions);
 
                 System.out.println(wm.getConnectionInfo());
                 System.out.println("ssid:"+wm.getConnectionInfo().getSSID());
